@@ -1,0 +1,4 @@
+set_io clk_100mhz 11
+set_io led[1] 26
+set_io led[2] 27
+set_io led[3] 28
