@@ -1,9 +1,9 @@
-synthesize: demo.bin
+synthesize: demo.h
 
 demo.blif: top.v
 	yosys -q -p "synth_ice40 -blif demo.blif" top.v
 
-header: demo.bin
+demo.h: demo.bin
 	xxd -i demo.bin  > demo.h
 	sed -i -r 's/unsigned/const unsigned/g' demo.h
 	#cp $(PROJ).blif $(PROJ)_.blif
@@ -19,6 +19,6 @@ demo.bin: demo.asc
 	icepack $< $@
 
 clean:
-	rm -f demo.blif demo.asc demo.rpt demo.bin demo.h
+	rm -f demo.h demo.blif demo.asc demo.rpt demo.bin demo.h
 
 .PHONY: synthesize
